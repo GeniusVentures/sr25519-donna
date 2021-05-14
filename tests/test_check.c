@@ -29,7 +29,11 @@ void creates_pair_from_known_seed() {
     sr25519_mini_secret_key seed = {0};
     memcpy(seed, fromhex("fac7959dbfe72f052e5a0c3c8d6530f202b02fd8f9f5ca3580ec8deb7797479e"), 32);
     sr25519_public_key expected = {0};
+#if defined(SR25519_HASH_SHA3_BRAINHUB)
+    memcpy(expected, fromhex("8e0894dedca98b3350d939a0a09dfe54b5787700d2bd3f6e87a8fcb55f32930a"), 32);
+#else
     memcpy(expected, fromhex("46ebddef8cd9bb167dc30878d7113b7e168e6f0646beffd77d69d39bad76b47a"), 32);
+#endif
     sr25519_keypair keypair = {0};
     sr25519_keypair_from_seed(keypair, seed);
     sr25519_public_key public_key = {0};
@@ -90,7 +94,11 @@ void soft_derives_pair() {
     sr25519_mini_secret_key seed = {0};
     memcpy(seed, fromhex("fac7959dbfe72f052e5a0c3c8d6530f202b02fd8f9f5ca3580ec8deb7797479e"), 32);
     sr25519_public_key expected = {0};
+#if defined(SR25519_HASH_SHA3_BRAINHUB)
+    memcpy(expected, fromhex("c09af771069a11848c4ca0781aaa037e0e3ae7bff9b33048323369e72cfa5c72"), 32);
+#else
     memcpy(expected, fromhex("40b9675df90efa6069ff623b0fdfcf706cd47ca7452a5056c7ad58194d23440a"), 32);
+#endif
     sr25519_keypair keypair = {0};
     sr25519_keypair_from_seed(keypair, seed);
     sr25519_keypair derived = {0};
@@ -133,7 +141,11 @@ void hard_derives_pair() {
     sr25519_mini_secret_key seed = {0};
     memcpy(seed, fromhex("fac7959dbfe72f052e5a0c3c8d6530f202b02fd8f9f5ca3580ec8deb7797479e"), 32);
     sr25519_public_key expected = {0};
+#if defined(SR25519_HASH_SHA3_BRAINHUB)
+    memcpy(expected, fromhex("8257ff02db3f2fc777d42baf6208d5badc4c933cedd43d2a89092b11496cde6a"), 32);
+#else
     memcpy(expected, fromhex("d43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d"), 32);
+#endif
     sr25519_keypair keypair = {0};
     sr25519_keypair_from_seed(keypair, seed);
     sr25519_keypair derived = {0};
@@ -148,7 +160,7 @@ void hard_derives_pair() {
     }
 }
 
-void vrf_verify() {
+void vrf_verify_test() {
     printf("test vrf verify: ");
 
     sr25519_mini_secret_key seed = {0};
@@ -238,7 +250,7 @@ int main(int argc, char *argv[]) {
     soft_derives_pair();
     soft_derives_public();
     hard_derives_pair();
-    vrf_verify();
+    vrf_verify_test();
     vrf_result_not_less();
     vrf_sign_and_check();
 

@@ -105,6 +105,22 @@ static uint8_t uchar_ct_eq(const unsigned char a, const unsigned char b) {
  *
  * Returns 1 iff the bytes are equals and 0 otherwise.
  */
+uint8_t uint8_64_ct_eq(const unsigned char a[64], const unsigned char b[64]) {
+  unsigned char x = 1;
+  unsigned char i;
+
+  for (i = 0; i < 64; i++) {
+    x &= uchar_ct_eq(a[i], b[i]);
+  }
+
+  return (uint8_t)x;
+}
+
+/**
+ * Check if two 32 bytes arrays are equal in constant time.
+ *
+ * Returns 1 iff the bytes are equals and 0 otherwise.
+ */
 uint8_t uint8_32_ct_eq(const unsigned char a[32], const unsigned char b[32]) {
     unsigned char x = 1;
     unsigned char i;

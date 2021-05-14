@@ -186,7 +186,7 @@ mul256_modm(bignum256modm r, const bignum256modm x, const bignum256modm y) {
 }
 
 static void
-expand256_modm(bignum256modm out, const unsigned char *in, size_t len) {
+expand256_modm(bignum256modm out, const uint8_t*in, size_t len) {
     unsigned char work[64] = {0};
     bignum256modm_element_t x[16];
     bignum256modm q1;

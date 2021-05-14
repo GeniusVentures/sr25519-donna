@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-SODIUM_EXPORT
+SR25519_DONNA_EXPORT
 void sodium_misuse(void)
             __attribute__ ((noreturn));
 

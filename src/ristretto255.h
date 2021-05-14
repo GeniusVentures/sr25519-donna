@@ -9,6 +9,8 @@
 
 typedef uint8_t ristretto255_hash_output[64];
 
+uint8_t uint8_64_ct_eq(const unsigned char a[64], const unsigned char b[64]);
+
 uint8_t uint8_32_ct_eq(const unsigned char a[32], const unsigned char b[32]);
 
 int ristretto_decode(ge25519 *element, const unsigned char bytes[32]);
