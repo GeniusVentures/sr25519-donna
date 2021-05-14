@@ -6,7 +6,7 @@
 #include <limits.h>
 
 #include <sys/types.h>
-#include "sr25519_donna_Export.h"
+#include "sr25519-donna_Export.h"
 
 
 #if !defined(__clang__) && !defined(__GNUC__)
