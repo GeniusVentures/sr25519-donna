@@ -80,7 +80,7 @@ const char *randombytes_implementation_name(void);
 /* -- NaCl compatibility interface -- */
 
 SR25519_DONNA_EXPORT
-void randombytes(unsigned char * const buf, const unsigned long long buf_len)
+void randombytes_default(unsigned char * const buf, const unsigned long long buf_len)
             __attribute__ ((nonnull));
 
 #ifdef __cplusplus
